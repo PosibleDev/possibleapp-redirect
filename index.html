@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Open Possible App</title>
-  <meta http-equiv="refresh" content="0; url=posible://open" />
-  {/* <script>
-    // Fallback agar app install nahi hai
-    setTimeout(() => {
-      window.location.href = "https://play.google.com/store/apps/details?id=com.yourapp.package";
-    }, 2000);
-  </script> */}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <script>
+    function openApp() {
+      // 👇 yaha apna custom scheme lagao
+      window.location = "posible://open";
+
+      // 2 second baad fallback Play Store pe
+      setTimeout(function () {
+        window.location = "https://play.google.com/store/apps/details?id=com.yourapp.package";
+      }, 2000);
+    }
+  </script>
 </head>
-<body>
-  <p>Opening app... If it doesn’t open, <a href="posible://open">click here</a>.</p>
+<body onload="openApp()">
+  <p>Opening app... agar app install nahi hai to Play Store khulega.</p>
 </body>
 </html>
